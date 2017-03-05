@@ -1,13 +1,13 @@
-#include<stdio.h>
+ï»¿#include<stdio.h>
 #include<malloc.h>
 #include<time.h>
 
 long long another(void);
 
-//½«ÊäÈëµÄÊı×é°´ÒÀ´ÎÒÆÎ»´òÓ¡
+//å°†è¾“å…¥çš„æ•°ç»„æŒ‰ä¾æ¬¡ç§»ä½æ‰“å°
 int main(int argc, char const *argv[])
 {
-	//¼ÆËãÔËĞĞÊ±¼äµÄ¶¨Òå
+	//è®¡ç®—è¿è¡Œæ—¶é—´çš„å®šä¹‰
 	clock_t start, finish;
 	double duration;
 	
@@ -15,19 +15,19 @@ int main(int argc, char const *argv[])
 	int displacement = 0, length = 0, num = 0;
 	int i = 0, choose=0;
 
-	printf("ÊäÈëÊı×éµÄ³¤¶È£¬ºÍÎ»ÒÆµÄ´óĞ¡£¬ÒÔ\",\"¸ô¿ª\n");
+	printf("è¾“å…¥æ•°ç»„çš„é•¿åº¦ï¼Œå’Œä½ç§»çš„å¤§å°ï¼Œä»¥\",\"éš”å¼€\n");
 	scanf_s("%d %d", &length, &displacement);
-	//¶¨ÒåÊı×é³¤¶È
+	//å®šä¹‰æ•°ç»„é•¿åº¦
 	array = (int*)malloc(sizeof(int)*length);
 
 	for (i; i<length; i++)
 	{
-		printf("¿ªÊ¼ÊäÈëÊı×éµÚ%d¸ö:", i + 1);
+		printf("å¼€å§‹è¾“å…¥æ•°ç»„ç¬¬%dä¸ª:", i + 1);
 		scanf_s("%d", &num);
 		*(array + i) = num;
 	}
 
-	start = clock();//¼ÆÊ±¿ªÊ¼
+	start = clock();//è®¡æ—¶å¼€å§‹
 
 	for (i = 0; i < length; i++)
 	{
@@ -38,20 +38,20 @@ int main(int argc, char const *argv[])
 	}
 
 	{	
-		//´òÓ¡ÔËĞĞµÄÊ±¼ä
-		finish = clock();//¼ÆÊ±½áÊø
+		//æ‰“å°è¿è¡Œçš„æ—¶é—´
+		finish = clock();//è®¡æ—¶ç»“æŸ
 		duration = (double)(finish - start) / CLOCKS_PER_SEC;
 		printf("Time: %fms\n", duration * 1000);
 	}
 
-	printf("\nÈç¹ûÄãÏë×öanother£¬ÇëÊäÈë1£¬²»ÏëÇëÊäÈëÈÎÒ»·Ç1µÄÊı\n");
+	printf("\nå¦‚æœä½ æƒ³åšanotherï¼Œè¯·è¾“å…¥1ï¼Œä¸æƒ³è¯·è¾“å…¥ä»»ä¸€é1çš„æ•°\n");
 	scanf_s("%d", &choose);
-	start = clock();//¼ÆÊ±¿ªÊ¼
+	start = clock();//è®¡æ—¶å¼€å§‹
 	if(choose==1)
 		printf("%lld\n", another());
 	{
-		//´òÓ¡ÔËĞĞµÄÊ±¼ä
-		finish = clock();//¼ÆÊ±½áÊø
+		//æ‰“å°è¿è¡Œçš„æ—¶é—´
+		finish = clock();//è®¡æ—¶ç»“æŸ
 		duration = (double)(finish - start) / CLOCKS_PER_SEC;
 		printf("Time: %fms\n", duration * 1000);
 	}
@@ -60,11 +60,11 @@ int main(int argc, char const *argv[])
 
 long long another(void)
 {
-	//1-9µÄÊıÈç1+11+111+1111.......Ïà¼Ó
+	//1-9çš„æ•°å¦‚1+11+111+1111.......ç›¸åŠ 
 	int a = 0, b = 0, length = 0, i = 0;
 	long long sum = 0;
-	//³õÊ¼µÄÊıÊÇÊ²Ã´£¬ÒªÏà¼Ó¼¸´Î
-	printf("ÇëÊäÈë1-9µÄÊı£¬Ïà¼Ó¼¸´Î£¬ÒÔ\",\"¸ô¿ª\n");
+	//åˆå§‹çš„æ•°æ˜¯ä»€ä¹ˆï¼Œè¦ç›¸åŠ å‡ æ¬¡
+	printf("è¯·è¾“å…¥1-9çš„æ•°ï¼Œç›¸åŠ å‡ æ¬¡ï¼Œä»¥\",\"éš”å¼€\n");
 	scanf_s("%d,%d", &a, &length);
 	b = a;
 	for (i; i < length; i++)
