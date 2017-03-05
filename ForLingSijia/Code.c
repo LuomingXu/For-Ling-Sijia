@@ -1,24 +1,32 @@
 #include<stdio.h>
-//讲输入的数组按依次移位打印
+#include<malloc.h>
+#include<time.h>
+int another(void);
+
+//将输入的数组按依次移位打印
 int main(int argc, char const *argv[])
 {
+	//计算运行时间的定义
+	clock_t start, finish;
+	double duration;
+	
 	int *array;
-	int displacement = 0, length = 0;
+	int displacement = 0, length = 0, num = 0;
 	int i = 0, choose=0;
-	//输入数组的长度，和位移的大小
+
+	printf("输入数组的长度，和位移的大小，以空格隔开\n");
 	scanf_s("%d %d", &length, &displacement);
-	switch (choose)
+	//定义数组长度
+	array = (int*)malloc(sizeof(int)*length);
+
+	for (i; i<length; i++)
 	{
-	case 0:
-		//普通输入数组
-		for (i = 0; i < length; i++)
-			scanf_s("%d", &array[i]);
-	case 1:
-		//malloc定义数组长度，再输入数组
-	default:
-		break;
+		printf("开始输入数组第%d个:", i + 1);
+		scanf_s("%d", &num);
+		*(array + i) = num;
 	}
 
+	start = clock();//计时开始
 
 	for (i = 0; i < length; i++)
 	{
@@ -27,15 +35,31 @@ int main(int argc, char const *argv[])
 		else
 			printf("%d ", array[i + displacement - length]);
 	}
-	printf("\n");
 
-	printf("%d\n", another());
+	{	
+		//打印运行的时间
+		finish = clock();//计时结束
+		duration = (double)(finish - start) / CLOCKS_PER_SEC;
+		printf("Time: %fms\n", duration * 1000);
+	}
 
+	printf("\n如果你想做another，请输入1，不想请输入任一非1的数\n");
+	scanf_s("%d", &choose);
+	start = clock();//计时开始
+	if(choose==1)
+		printf("%d\n", another());
+	{
+		//打印运行的时间
+		finish = clock();//计时结束
+		duration = (double)(finish - start) / CLOCKS_PER_SEC;
+		printf("Time: %fms\n", duration * 1000);
+	}
 	return 0;
 }
 
 int another(void)
-{//1-9的数如1+11+111+1111.......相加
+{
+	//1-9的数如1+11+111+1111.......相加
 	int a = 0, b = 0, length = 0, i = 0, sum = 0;
 	//初始的数是什么，要相加几次
 	printf("请输入1-9的数，相加几次，以逗号隔开\n");
@@ -48,15 +72,4 @@ int another(void)
 	}
 
 	return sum;
-}
-
-int input_array(int *array,int length)
-{
-	array = (int*)malloc(sizeof(int)*length);
-	int num = 0;
-	while (num!=-1)
-	{
-		array = num;
-		array++;
-	}
 }
