@@ -1,7 +1,8 @@
 #include<stdio.h>
 #include<malloc.h>
 #include<time.h>
-int another(void);
+
+long long another(void);
 
 //将输入的数组按依次移位打印
 int main(int argc, char const *argv[])
@@ -14,7 +15,7 @@ int main(int argc, char const *argv[])
 	int displacement = 0, length = 0, num = 0;
 	int i = 0, choose=0;
 
-	printf("输入数组的长度，和位移的大小，以空格隔开\n");
+	printf("输入数组的长度，和位移的大小，以\",\"隔开\n");
 	scanf_s("%d %d", &length, &displacement);
 	//定义数组长度
 	array = (int*)malloc(sizeof(int)*length);
@@ -47,7 +48,7 @@ int main(int argc, char const *argv[])
 	scanf_s("%d", &choose);
 	start = clock();//计时开始
 	if(choose==1)
-		printf("%d\n", another());
+		printf("%lld\n", another());
 	{
 		//打印运行的时间
 		finish = clock();//计时结束
@@ -57,12 +58,13 @@ int main(int argc, char const *argv[])
 	return 0;
 }
 
-int another(void)
+long long another(void)
 {
 	//1-9的数如1+11+111+1111.......相加
-	int a = 0, b = 0, length = 0, i = 0, sum = 0;
+	int a = 0, b = 0, length = 0, i = 0;
+	long long sum = 0;
 	//初始的数是什么，要相加几次
-	printf("请输入1-9的数，相加几次，以逗号隔开\n");
+	printf("请输入1-9的数，相加几次，以\",\"隔开\n");
 	scanf_s("%d,%d", &a, &length);
 	b = a;
 	for (i; i < length; i++)
