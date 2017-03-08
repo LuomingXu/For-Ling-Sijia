@@ -12,11 +12,14 @@ int main(int argc, char const *argv[])
 	double duration;
 	
 	int *array;
-	int displacement = 0, length = 0, num = 0;
-	int i = 0, choose=0;
+	int displacement = 0;
+    int length = 0;
+    int num = 0;
+    int choose = 0;
+	int i = 0;
 
 	printf("输入数组的长度，和位移的大小，以\",\"隔开\n");
-	scanf_s("%d %d", &length, &displacement);
+	scanf_s("%d,%d", &length, &displacement);
 	//定义数组长度
 	array = (int*)malloc(sizeof(int)*length);
 
