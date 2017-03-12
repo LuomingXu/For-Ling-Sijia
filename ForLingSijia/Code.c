@@ -7,6 +7,7 @@
 int** askForArray2D(int rows, int columns);//定义二维数组
 void freeMalloc2D(int** array, int rows);//记得要free，malloc
 long long another(void);
+void errorExperiment();
 
 //将输入的数组按依次移位打印
 int main(int argc, char const *argv[])
@@ -144,4 +145,35 @@ void freeMalloc2D(int** array, int rows)
 		free(array[i]);
 
 	free(array);
+}
+
+void errorExperiment()
+{
+	FILE * fp;
+	int errnum;
+	fp = fopen_s(&fp,"unexist.txt", "rb");
+	if (fp == NULL)
+	{
+		errnum = errno;
+//		fprintf(stderr, "Value of errno: %d -by www.yiibai.com \n", errno);
+		perror("Error printed by perror");
+//		fprintf(stderr, "Error opening file: %s\n", strerror_s(errnum));
+	}
+	else
+	{
+		fclose(fp);
+	}
+
+	int dividend = 20;
+	int divisor = 0;
+	int quotient;
+
+	if (divisor == 0) {
+		fprintf(stderr, "Division by zero! Exiting...\n");
+		exit(-1);
+	}
+	quotient = dividend / divisor;
+	fprintf(stderr, "Value of quotient : %d\n", quotient);
+
+	exit(0);
 }
